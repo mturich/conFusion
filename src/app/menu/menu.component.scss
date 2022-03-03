@@ -1,0 +1,24 @@
+.menu {
+  background: whitesmoke;
+  padding-block: 5rem ;
+}
+
+.dish_wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(520px, 1fr));
+
+  gap: 5rem;
+  margin-inline: 5rem;
+
+}
+
+.dish {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  height: 300px;
+
+  border: solid 1px black;
+  border-radius: 1rem;
+}
