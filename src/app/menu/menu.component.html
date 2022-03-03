@@ -1,7 +1,10 @@
-
-
-<section class="menu">
-  <div class="dish_wrapper">
-    <div class="dish" *ngFor="let dish of dishes">{{ dish.name }}</div>
-  </div>
-</section>
+<div class="container" fxLayout="column" fxLayoutGap="1rem">
+  <mat-list fxFlex>
+    <mat-list-item *ngFor="let dish of dishes">
+      <img matListAvatar src="{{ dish.image }}" alt="{{ dish.name }}" />
+      <h2 matLine>{{ dish.name }}</h2>
+      <p matLine>
+        {{ dish.description }}</p>
+    </mat-list-item>
+  </mat-list>
+</div>
