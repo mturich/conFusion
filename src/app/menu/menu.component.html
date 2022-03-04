@@ -1,10 +1,41 @@
 <div class="container" fxLayout="column" fxLayoutGap="1rem">
-  <mat-list fxFlex>
-    <mat-list-item *ngFor="let dish of dishes">
-      <img matListAvatar src="{{ dish.image }}" alt="{{ dish.name }}" />
-      <h2 matLine>{{ dish.name }}</h2>
-      <p matLine>
-        {{ dish.description }}</p>
-    </mat-list-item>
-  </mat-list>
+  <div fxFlex>
+    <div>
+      <h1>Menu</h1>
+      <hr />
+    </div>
+  </div>
+
+  <div fxFlex>
+    <mat-grid-list cols="2" height="150px">
+      <mat-grid-tile *ngFor="let dish of dishes">
+        <img height="200px" src="{{ dish.image }}" alt="{{ dish.name }}" />
+        <mat-grid-tile-footer>
+          <h2 style="margin: auto">{{ dish.name | uppercase }}</h2>
+        </mat-grid-tile-footer>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+
+  <div fxFlex *ngIf="selectedDish"  width="200rem">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          <h2 style="margin: auto">{{ selectedDish.name | uppercase }}</h2>
+        </mat-card-title>
+      </mat-card-header>
+      <img
+        mat-card-image
+        src="{{ selectedDish.image }}"
+        alt="{{ selectedDish.name }}"
+
+        class="right"
+      />
+      <mat-card-content> 
+        <p>{{selectedDish.description}}</p>
+      </mat-card-content>
+     <button mat-stroked-button color="primary" >Like</button>
+     <button mat-stroked-button color="primary" >Share</button>
+    </mat-card>
+  </div>
 </div>
