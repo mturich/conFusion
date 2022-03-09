@@ -10,9 +10,18 @@ import { DISHES } from "../shared/dishes";
 export class MenuComponent implements OnInit {
   dishes: Dish[] = DISHES;
 
-  selectedDish: Dish = DISHES[0];
+  selectedDish: Dish;
+
+
+
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() { }
+  
+  // THis neeeds to be implemented to understand the 'onSelect' funtion in the // menu.component.html
+  onSelect(dish: Dish) {
+    this.selectedDish = dish;
+  }
+
 }
