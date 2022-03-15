@@ -1,6 +1,9 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import { Params, ActivatedRoute } from "@angular/router";
+import { Location } from "@angular/common";
 // import Dish class
 import { Dish } from "../../shared/dish";
+import { DishService } from "./../../service/dish.service";
 
 @Component({
   selector: "app-dishdetail",
@@ -8,11 +11,24 @@ import { Dish } from "../../shared/dish";
   styleUrls: ["./dishdetail.component.scss"],
 })
 export class DishdetailComponent implements OnInit {
-  // when data is passed from the parent to the child, it has to be imported
+  // when data is passed from the parent to the child, it has to be imported with @Import
   // It us definded as Dish class which has to be imported for that purpose
-  @Input() dish: Dish;
+  dish: Dish;
 
-  constructor() {}
+  constructor(
+    private dishService: DishService,
+    private location: Location,
+    private route: ActivatedRoute
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    let id = this.route.snapshot.params['id']
+      
+    this.dish = this.dishService.getDish(id);
+  }
+
+  goBack():void {
+    this.location.back();
+  }
+
 }
