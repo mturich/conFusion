@@ -7,7 +7,7 @@ export const DISHES: Dish[] = [
     name: "Uthappizza",
     image: "/assets/images/uthappizza.png",
     category: "mains",
-    featured: true,
+    featured: false,
     label: "Hot",
     price: "4.99",
     // tslint:disable-next-line:max-line-length
@@ -52,7 +52,7 @@ export const DISHES: Dish[] = [
     name: "Zucchipakoda",
     image: "/assets/images/zucchipakoda.png",
     category: "appetizer",
-    featured: false,
+    featured: true,
     label: "",
     price: "1.99",
     description:
