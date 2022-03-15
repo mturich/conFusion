@@ -1,4 +1,3 @@
-import { Promotion } from './shared/promotion';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
@@ -23,6 +22,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 
 import { DishService } from "./service/dish.service";
 import { PromotionService } from './service/promotion.service';
+import { LeaderService } from './service/leader.service';
 
 
 @NgModule({
@@ -52,7 +52,8 @@ import { PromotionService } from './service/promotion.service';
   // services are provider
   providers: [
     DishService,
-    PromotionService,  
+    PromotionService, 
+    LeaderService,
   ],
   bootstrap: [AppComponent],
 })
