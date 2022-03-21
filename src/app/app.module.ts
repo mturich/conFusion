@@ -23,6 +23,8 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { DishService } from "./service/dish.service";
 import { PromotionService } from './service/promotion.service';
 import { LeaderService } from './service/leader.service';
+import { LoginComponent } from './components/login/login.component'; 
+import { MatDialogModule } from '@angular/material';
 
 
 @NgModule({
@@ -37,6 +39,7 @@ import { LeaderService } from './service/leader.service';
     HomeComponent,
     ContactComponent,
     PageNotFoundComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,13 @@ import { LeaderService } from './service/leader.service';
     MatCardModule,
     MatButtonModule,
     AppRoutingModule,
+    MatDialogModule
   ],
+
+  entryComponents: [
+    LoginComponent
+  ],
+
   // services are provider
   providers: [
     DishService,
