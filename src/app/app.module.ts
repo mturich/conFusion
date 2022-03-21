@@ -1,4 +1,4 @@
-import { AppRoutingModule } from './app-routing/app-routing.module';
+import { AppRoutingModule } from "./app-routing/app-routing.module";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -8,6 +8,11 @@ import { MatListModule } from "@angular/material/list";
 import { MatGridListModule } from "@angular/material/grid-list";
 import { MatCardModule } from "@angular/material/card";
 import { MatButtonModule } from "@angular/material/button";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
+import { MatCheckboxModule } from "@angular/material/checkbox";
+import { FormsModule } from "@angular/forms";
+import { MatDialogModule } from "@angular/material";
 
 import "hammerjs";
 import { AppComponent } from "./app.component";
@@ -15,16 +20,15 @@ import { MenuComponent } from "./components/menu/menu.component";
 import { DishdetailComponent } from "./components/dishdetail/dishdetail.component";
 import { HeaderComponent } from "./components/Footer_Header/header/header.component";
 import { FooterComponent } from "./components/Footer_Header/footer/footer.component";
-import { AboutComponent } from './components/about/about.component';
-import { HomeComponent } from './components/home/home.component';
-import { ContactComponent } from './components/contact/contact.component';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { AboutComponent } from "./components/about/about.component";
+import { HomeComponent } from "./components/home/home.component";
+import { ContactComponent } from "./components/contact/contact.component";
+import { PageNotFoundComponent } from "./components/page-not-found/page-not-found.component";
 
 import { DishService } from "./service/dish.service";
-import { PromotionService } from './service/promotion.service';
-import { LeaderService } from './service/leader.service';
-import { LoginComponent } from './components/login/login.component'; 
-import { MatDialogModule } from '@angular/material';
+import { PromotionService } from "./service/promotion.service";
+import { LeaderService } from "./service/leader.service";
+import { LoginComponent } from "./components/login/login.component";
 
 
 @NgModule({
@@ -51,19 +55,17 @@ import { MatDialogModule } from '@angular/material';
     MatCardModule,
     MatButtonModule,
     AppRoutingModule,
-    MatDialogModule
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCheckboxModule,
+    FormsModule
   ],
 
-  entryComponents: [
-    LoginComponent
-  ],
+  entryComponents: [LoginComponent],
 
   // services are provider
-  providers: [
-    DishService,
-    PromotionService, 
-    LeaderService,
-  ],
+  providers: [DishService, PromotionService, LeaderService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
