@@ -11,7 +11,9 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatCheckboxModule } from "@angular/material/checkbox";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MatSelectModule } from "@angular/material/select";
+import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { MatDialogModule } from "@angular/material";
 
 import "hammerjs";
@@ -29,7 +31,6 @@ import { DishService } from "./service/dish.service";
 import { PromotionService } from "./service/promotion.service";
 import { LeaderService } from "./service/leader.service";
 import { LoginComponent } from "./components/login/login.component";
-
 
 @NgModule({
   declarations: [
@@ -59,7 +60,10 @@ import { LoginComponent } from "./components/login/login.component";
     MatFormFieldModule,
     MatInputModule,
     MatCheckboxModule,
-    FormsModule
+    FormsModule,
+    MatSelectModule,
+    MatSlideToggleModule,
+    ReactiveFormsModule,
   ],
 
   entryComponents: [LoginComponent],
