@@ -24,10 +24,14 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.dish = this.DishService.getFeaturedDish()
+    // using Promises to deal with the async element of some server, API calls
+    this.DishService.getFeaturedDish()
+      .subscribe((dish) => this.dish = dish);
 
-    this.promotion = this.PromotionService.getFeaturedPromotion()
+    this.PromotionService.getFeaturedPromotion()
+      .then((promotion) => this.promotion = promotion);
 
-    this.leader = this.LeaderService.getFeaturedLeader()
+    this.LeaderService.getFeaturedLeader()
+      .then((leader) => this.leader = leader);
   }
 }

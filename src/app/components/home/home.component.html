@@ -50,4 +50,9 @@
       <p matLine>{{ leader.description }}</p>
     </mat-card-content>
   </mat-card>
+
+  <div  [hidden]="dish && promotion && leader" fxFlex>
+    <mat-spinner></mat-spinner>  <h4>Loading .... please wait!</h4>
+  </div>
+
 </div>

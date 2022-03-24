@@ -19,7 +19,7 @@ export class ContactComponent implements OnInit {
     this.createForm();
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   createForm() {
     this.feedbackForm = this.fb.group({
@@ -37,15 +37,15 @@ export class ContactComponent implements OnInit {
     this.feedback = this.feedbackForm.value;
     console.log(this.feedback);
     this.feedbackForm.reset(
-    {  firstname: "",
-      lastname: "",
-      telnum: 0,
-      email: "",
-      agree: false,
-      contacttype: "None",
-      message: "",
-}
-    );
+      {
+        firstname: "",
+        lastname: "",
+        telnum: 0,
+        email: "",
+        agree: false,
+        contacttype: "None",
+        message: "",
+      });
     this.feedbackFormDirective.resetForm();
   }
 }
