@@ -14,7 +14,7 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatSelectModule } from "@angular/material/select";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
-import { MatDialogModule, MatProgressSpinnerModule } from "@angular/material";
+import { MatDialogModule, MatProgressSpinnerModule, MatSliderModule } from "@angular/material";
 
 import "hammerjs";
 import { AppComponent } from "./app.component";
@@ -65,6 +65,7 @@ import { LoginComponent } from "./components/login/login.component";
     MatSlideToggleModule,
     ReactiveFormsModule,
     MatProgressSpinnerModule,
+    MatSliderModule
   ],
 
   entryComponents: [LoginComponent],
