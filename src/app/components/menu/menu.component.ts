@@ -1,9 +1,7 @@
-import { DISHES } from 'src/app/shared/dishes';
-import { DishService } from '../../service/dish.service';
-import { Component, OnInit } from "@angular/core";
+import { baseURL } from "./../../shared/baseurl";
+import { DishService } from "../../service/dish.service";
+import { Component, Inject, OnInit } from "@angular/core";
 import { Dish } from "../../shared/dish";
-
-
 
 @Component({
   selector: "app-menu",
@@ -11,26 +9,19 @@ import { Dish } from "../../shared/dish";
   styleUrls: ["./menu.component.scss"],
 })
 export class MenuComponent implements OnInit {
-  dishes: Dish[] ;
-
-  selectedDish: Dish;
+  dishes: Dish[];
 
   // service has to be declared in the constructor
-  constructor(private dishService: DishService) {}
+  constructor(
+    // for services, just the private keyword is used
+    private dishService: DishService,
+    // for values, the @Inject keyword has to be used
+    // needs to be injected to update the dish.image with the baseURL
+    @Inject("BaseURL") private baseURL
+  ) {}
 
-  ngOnInit() { 
+  ngOnInit() {
     //handels the promise of the dishService ()
-    this.dishService.getDishes()
-      .subscribe((dishes) => this.dishes = dishes);
-
+    this.dishService.getDishes().subscribe((dishes) => (this.dishes = dishes));
   }
-  
-  // THis neeeds to be implemented to understand the 'onSelect' funtion in the // menu.component.html
-  onSelect(dish: Dish) {
-    this.selectedDish = dish;
-  }
-
-     
-
-
 }

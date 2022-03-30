@@ -1,30 +1,37 @@
 import { Injectable } from "@angular/core";
 // are needed to config service
 import { Dish } from "../shared/dish";
-import { DISHES } from "../shared/dishes";
-import { of } from "rxjs";
-import { delay } from "rxjs/operators";
+
 import { Observable } from "rxjs";
+import { HttpClient } from "@angular/common/http";
+import { baseURL } from "../shared/baseurl";
+import { map } from "rxjs/operators";
 
 @Injectable({
   providedIn: "root",
 })
 export class DishService {
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   getDishes(): Observable<Dish[]> {
-    return of(DISHES).pipe(delay(500));
+    return this.http.get<Dish[]>(baseURL + "dishes");
+    //return of(DISHES).pipe(delay(500));
   }
 
   getDish(id: string): Observable<Dish> {
-    return of(DISHES.filter((dish) => dish.id === id)[0]).pipe(delay(500));
+    return this.http.get<Dish>(baseURL + "dishes/" + id);
   }
-
+  // the query (?) operator gives back an array with only contains one vaule (in this very example)
+  // therefore the array has to be accessed and the fist value is selected
   getFeaturedDish(): Observable<Dish> {
-    return of(DISHES.filter((dish) => dish.featured)[0]).pipe(delay(500));
+    return this.http
+      .get<Dish>(baseURL + "dishes?featured=true")
+      .pipe(map((dishes) => dishes[0]));
   }
 
   getDishIds(): Observable<string[] | any> {
-    return of(DISHES.map(dish => dish.id));
+    return this.getDishes().pipe(
+      map((dishes) => dishes.map((dish) => dish.id))
+    );
   }
 }

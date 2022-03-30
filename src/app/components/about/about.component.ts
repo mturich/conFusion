@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common'; 
 import { Leader } from '../../shared/leader';
 import { LeaderService } from 'src/app/service/leader.service';
+import { baseURL } from 'src/app/shared/baseurl'; 
 
 @Component({
   selector: 'app-about',
@@ -17,12 +18,13 @@ export class AboutComponent implements OnInit {
     private leaderService: LeaderService,
     private location: Location,
     private route: ActivatedRoute
+    @Inject("BaseURL") private baseURL
   ) { }
 
   ngOnInit() {
     let id = this.route.snapshot.params['id'];
     this.leaderService.getLeaders()
-      .then((leaders) => this.leaders = leaders);
+      .subscribe((leaders) => this.leaders = leaders);
   }
 
 }
