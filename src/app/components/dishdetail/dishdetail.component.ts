@@ -18,6 +18,7 @@ export class DishdetailComponent implements OnInit {
   // when data is passed from the parent to the child, it has to be imported with @Import
   // It us definded as Dish class which has to be imported for that purpose
   dish: Dish;
+  dishcopy: Dish;
   dishIds: string[];
   prev: string;
   next: string;
@@ -70,6 +71,7 @@ export class DishdetailComponent implements OnInit {
       )
       .subscribe((dish) => {
         this.dish = dish;
+        this.dishcopy = dish;
         this.setPrevNext(dish.id);
         (errmess) => (this.errMess = <any>errmess);
       });
@@ -124,8 +126,24 @@ export class DishdetailComponent implements OnInit {
   }
 
   onSubmitRating() {
+    // gets values from the form
     this.comment = this.commentForm.value;
-    this.dish.comments.push(this.comment);
+    // saves the new comment from the form in a copy of the dish -> dishcopy
+    this.dishcopy.comments.push(this.comment);
+    //updates the server with the dishcopy 
+    this.dishService.putDish(this.dishcopy).subscribe(
+      // if updated get the new dish and dishcopy from the server
+      (dish) => {
+        this.dish = dish;
+        this.dishcopy = dish;
+      },
+      // handle any errors if they occure
+      (errmess) => {
+        (this.dish = null),
+        (this.dishcopy = null),
+        (this.errMess = <any>errmess);
+      }
+    );
     this.commentFormDirective.resetForm();
     this.commentForm.reset({
       rating: 5,

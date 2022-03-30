@@ -1,11 +1,15 @@
-<div fxLayout="row"
+<div class="container"
+     fxLayout="row"
      fxLayout.sm="column"
      fxLayout.xs="column"
      fxLayoutGap="1rem"
-     fxLayoutGap.xs="0">
-  
-     <div *ngIf="dish">
-    <div>
+     class="full-width " 
+     fxLayoutAlign.sm="space-around center"
+     fxLayoutAlign.xs-sm="space-around center"
+     xLayoutAlign.gt-md="stretch"    
+     >
+
+  <div class="full-width" *ngIf="dish" LayoutAlign.gt-md="stretch">
       <mat-card>
         <mat-card-title>
           {{ dish.name | uppercase }}
@@ -34,11 +38,9 @@
           </mat-card-actions>
         </div>
       </mat-card>
-    </div>
   </div>
 
-  <div *ngIf="dish">
-    <div>
+  <div class="full-width " *ngIf="dish" xLayoutAlign.gt-md="stretch">
       <mat-card>
         <mat-card-title> COMMENTS </mat-card-title>
         <mat-card-content>
@@ -57,11 +59,10 @@
           </mat-list>
         </mat-card-content>
       </mat-card>
-    </div>
   </div>
-  
 
-  <div *ngIf="dish">
+
+  <div class="full-width" *ngIf="dish" fxLayoutAlign.gt-md="stretch">
     <mat-card>
       <mat-card-content>
         <form novalidate
@@ -99,7 +100,9 @@
                 {{ formErrors.comment }}</mat-error>
             </mat-form-field>
           </p>
-          <button [disabled]="commentForm.invalid"  type="submit"              mat-button
+          <button [disabled]="commentForm.invalid"
+                  type="submit"
+                  mat-button
                   class="background-primary text-floral-white">
             Submit
           </button>
@@ -108,13 +111,16 @@
     </mat-card>
   </div>
 
-  <div fxFlex *ngIf="!dish && !errMess" >
-    <mat-spinner></mat-spinner>  <h4>Loading .... please wait!</h4>
+  <div fxFlex
+       *ngIf="!dish && !errMess">
+    <mat-spinner></mat-spinner>
+    <h4>Loading .... please wait!</h4>
   </div>
 
-  <div fxFlex *ngIf="errMess">
+  <div fxFlex
+       *ngIf="errMess">
     <h2>Error</h2>
     <p>{{errMess}}</p>
   </div>
-  
+
 </div>
