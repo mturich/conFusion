@@ -6,7 +6,7 @@ import { switchMap } from "rxjs/operators";
 // import Dish class
 import { Dish } from "../../shared/dish";
 import { DishService } from "../../service/dish.service";
-import { baseURL } from './../../shared/baseurl';
+import { baseURL } from "./../../shared/baseurl";
 import { Comment } from "../../shared/comment";
 
 @Component({
@@ -23,6 +23,8 @@ export class DishdetailComponent implements OnInit {
   next: string;
   commentForm: FormGroup;
   comment: Comment;
+  errMess: string;
+
   @ViewChild("fform") commentFormDirective;
 
   formErrors = {
@@ -49,7 +51,7 @@ export class DishdetailComponent implements OnInit {
     private location: Location,
     private route: ActivatedRoute,
     private fb: FormBuilder,
-    @Inject("BaseURL") private baseURL
+    @Inject("BaseURL") public baseURL
   ) {
     this.createForm();
   }
@@ -68,8 +70,8 @@ export class DishdetailComponent implements OnInit {
       )
       .subscribe((dish) => {
         this.dish = dish;
-
         this.setPrevNext(dish.id);
+        (errmess) => (this.errMess = <any>errmess);
       });
   }
 
@@ -84,6 +86,8 @@ export class DishdetailComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
+
+  // Create Form
 
   createForm(): void {
     this.commentForm = this.fb.group({

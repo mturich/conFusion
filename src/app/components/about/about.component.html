@@ -88,8 +88,13 @@
     </mat-card>
   </div>
 
-  <div fxFlex [hidden]="leaders" >
+  <div fxFlex *ngIf="!leaders && !errMess" >
     <mat-spinner></mat-spinner>
-    <h4>Loading .... please wait!</h4>
+    <h4>Loading Leaders.... please wait!</h4>
+  </div>
+
+  <div fxFlex *ngIf="errMess">
+    <h2>Error</h2>
+    <p>{{errMess}}</p>
   </div>
 </div>

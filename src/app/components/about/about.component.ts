@@ -13,18 +13,21 @@ import { baseURL } from 'src/app/shared/baseurl';
 export class AboutComponent implements OnInit {
 
   leaders: Leader[];
+  errMess: string;
 
   constructor(
     private leaderService: LeaderService,
     private location: Location,
     private route: ActivatedRoute
-    @Inject("BaseURL") private baseURL
+    @Inject("BaseURL") public baseURL
   ) { }
 
   ngOnInit() {
     let id = this.route.snapshot.params['id'];
     this.leaderService.getLeaders()
-      .subscribe((leaders) => this.leaders = leaders);
-  }
+      .subscribe(
+        leaders => this.leaders = leaders,
+        errmess => this.errMess = <any>errmess
+      ); }     
 
 }

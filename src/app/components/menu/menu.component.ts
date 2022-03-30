@@ -10,6 +10,7 @@ import { Dish } from "../../shared/dish";
 })
 export class MenuComponent implements OnInit {
   dishes: Dish[];
+  errMess: string;
 
   // service has to be declared in the constructor
   constructor(
@@ -17,11 +18,13 @@ export class MenuComponent implements OnInit {
     private dishService: DishService,
     // for values, the @Inject keyword has to be used
     // needs to be injected to update the dish.image with the baseURL
-    @Inject("BaseURL") private baseURL
-  ) {}
+    @Inject("BaseURL") public baseURL: string ) {}
 
   ngOnInit() {
     //handels the promise of the dishService ()
-    this.dishService.getDishes().subscribe((dishes) => (this.dishes = dishes));
+    this.dishService.getDishes().subscribe(
+      dishes => this.dishes = dishes,
+      errmess => this.errMess = <any>errmess
+    );
   }
 }

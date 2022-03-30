@@ -3,7 +3,8 @@
      fxLayout.xs="column"
      fxLayoutGap="1rem"
      fxLayoutGap.xs="0">
-  <div *ngIf="dish">
+  
+     <div *ngIf="dish">
     <div>
       <mat-card>
         <mat-card-title>
@@ -107,8 +108,13 @@
     </mat-card>
   </div>
 
-  <div *ngIf="!dish">
-    <mat-spinner></mat-spinner>
-    <h4>Loading .... please wait!</h4>
+  <div fxFlex *ngIf="!dish && !errMess" >
+    <mat-spinner></mat-spinner>  <h4>Loading .... please wait!</h4>
   </div>
+
+  <div fxFlex *ngIf="errMess">
+    <h2>Error</h2>
+    <p>{{errMess}}</p>
+  </div>
+  
 </div>
