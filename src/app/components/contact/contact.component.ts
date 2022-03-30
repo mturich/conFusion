@@ -8,6 +8,7 @@ import { Feedback, ContactType } from "src/app/shared/Feedback";
   templateUrl: "./contact.component.html",
   styleUrls: ["./contact.component.scss"],
 })
+
 export class ContactComponent implements OnInit {
   feedbackForm: FormGroup;
   feedback: Feedback;

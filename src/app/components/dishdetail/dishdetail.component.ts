@@ -5,9 +5,9 @@ import { Location } from "@angular/common";
 import { switchMap } from "rxjs/operators";
 // import Dish class
 import { Dish } from "../../shared/dish";
-import { DishService } from "./../../service/dish.service";
+import { DishService } from "../../service/dish.service";
 
-import { Comment } from "./../../shared/comment";
+import { Comment } from "../../shared/comment";
 
 @Component({
   selector: "app-dishdetail",
@@ -21,11 +21,9 @@ export class DishdetailComponent implements OnInit {
   dishIds: string[];
   prev: string;
   next: string;
-  dishComments: Comment[];
-
   commentForm: FormGroup;
   comment: Comment;
-  @ViewChild("fform2") feedbackFormDirective;
+  @ViewChild("fform") commentFormDirective;
 
   formErrors = {
     author: "",
@@ -45,6 +43,7 @@ export class DishdetailComponent implements OnInit {
       required: "Comment is required.",
     },
   };
+
   constructor(
     private dishService: DishService,
     private location: Location,
@@ -68,7 +67,7 @@ export class DishdetailComponent implements OnInit {
       )
       .subscribe((dish) => {
         this.dish = dish;
-        this.dishComments = dish.comments;
+
         this.setPrevNext(dish.id);
       });
   }
@@ -90,7 +89,7 @@ export class DishdetailComponent implements OnInit {
       rating: 5,
       comment: ["", Validators.required],
       author: ["", [Validators.required, Validators.minLength(2)]],
-      date: Date(),
+      date: new Date().toISOString(),
     });
 
     this.commentForm.valueChanges.subscribe((data) =>
@@ -121,14 +120,13 @@ export class DishdetailComponent implements OnInit {
 
   onSubmitRating() {
     this.comment = this.commentForm.value;
-    this.dishComments.push(this.comment);
-    
+    this.dish.comments.push(this.comment);
+    this.commentFormDirective.resetForm();
     this.commentForm.reset({
       rating: 5,
       comment: "",
       author: "",
       date: Date(),
     });
-    this.feedbackFormDirective.resetForm();
   }
 }
