@@ -3,13 +3,9 @@
      fxLayout.sm="column"
      fxLayout.xs="column"
      fxLayoutGap="1rem"
-     class="full-width " 
-     fxLayoutAlign.sm="space-around center"
-     fxLayoutAlign.xs-sm="space-around center"
-     xLayoutAlign.gt-md="stretch"    
      >
 
-  <div class="full-width" *ngIf="dish" LayoutAlign.gt-md="stretch">
+  <div fxFlex class="full-width" *ngIf="dish" >
       <mat-card>
         <mat-card-title>
           {{ dish.name | uppercase }}
@@ -40,7 +36,7 @@
       </mat-card>
   </div>
 
-  <div class="full-width " *ngIf="dish" xLayoutAlign.gt-md="stretch">
+  <div fxFlex class="full-width " *ngIf="dish" >
       <mat-card>
         <mat-card-title> COMMENTS </mat-card-title>
         <mat-card-content>
@@ -62,7 +58,7 @@
   </div>
 
 
-  <div class="full-width" *ngIf="dish" fxLayoutAlign.gt-md="stretch">
+  <div fxFlex class="full-width" *ngIf="dish" >
     <mat-card>
       <mat-card-content>
         <form novalidate

@@ -1,5 +1,3 @@
-
-import { baseURL } from "./shared/baseurl";
 import { AppRoutingModule } from "./app-routing/app-routing.module";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
@@ -18,6 +16,7 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { MatDialogModule, MatProgressSpinnerModule,  MatSliderModule} from "@angular/material";
 import { HttpClientModule } from "@angular/common/http";
+import { baseURL } from "./shared/baseurl";
 
 import "hammerjs";
 import { AppComponent } from "./app.component";
@@ -35,6 +34,7 @@ import { ProcessHTTPMsgService } from './service/process-httpmsg.service';
 import { DishService } from "./service/dish.service";
 import { PromotionService } from "./service/promotion.service";
 import { LeaderService } from "./service/leader.service";
+import { HighlightDirective } from './directives/highlight.directive';
 
 @NgModule({
   declarations: [
@@ -49,6 +49,7 @@ import { LeaderService } from "./service/leader.service";
     ContactComponent,
     PageNotFoundComponent,
     LoginComponent,
+    HighlightDirective,
   ],
   imports: [
     BrowserModule,

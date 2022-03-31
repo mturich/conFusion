@@ -53,3 +53,10 @@ $divider-color: #bdbdbd;
   color: #cd665f;
   text-decoration: underline;
 }
+
+.highlight {
+  background-color: $background-pale;
+  border: 1px solid $primary-color-dark;
+  z-index: 1;
+  transform: scale(1.01);
+}
