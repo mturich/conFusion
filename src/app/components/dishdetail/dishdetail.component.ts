@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute, Params } from "@angular/router";
 import { Location } from "@angular/common";
 import { switchMap } from "rxjs/operators";
+import { flyInOut, visibility, expand } from "src/app/animations/app.animation";
 // import Dish class
 import { Dish } from "../../shared/dish";
 import { DishService } from "../../service/dish.service";
@@ -13,6 +14,15 @@ import { Comment } from "../../shared/comment";
   selector: "app-dishdetail",
   templateUrl: "./dishdetail.component.html",
   styleUrls: ["./dishdetail.component.scss"],
+  host: {
+    '[@flyInOut]': 'true',
+    'style': 'display: block;'
+  },
+  animations: [
+    flyInOut(),
+    visibility(),
+    expand()
+  ]
 })
 export class DishdetailComponent implements OnInit {
   // when data is passed from the parent to the child, it has to be imported with @Import
@@ -130,7 +140,7 @@ export class DishdetailComponent implements OnInit {
     this.comment = this.commentForm.value;
     // saves the new comment from the form in a copy of the dish -> dishcopy
     this.dishcopy.comments.push(this.comment);
-    //updates the server with the dishcopy 
+    //updates the server with the dishcopy
     this.dishService.putDish(this.dishcopy).subscribe(
       // if updated get the new dish and dishcopy from the server
       (dish) => {
@@ -140,8 +150,8 @@ export class DishdetailComponent implements OnInit {
       // handle any errors if they occure
       (errmess) => {
         (this.dish = null),
-        (this.dishcopy = null),
-        (this.errMess = <any>errmess);
+          (this.dishcopy = null),
+          (this.errMess = <any>errmess);
       }
     );
     this.commentFormDirective.resetForm();

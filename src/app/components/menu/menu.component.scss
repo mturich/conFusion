@@ -12,13 +12,12 @@
 
 // }
 
-// .dish {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   background-color: white;
-//   height: 300px;
+.dish {
+  background-color: rgb(233, 233, 233);
+  height: 300px;
 
-//   border: solid 1px black;
-//   border-radius: 1rem;
-// }
+  border: solid 2px rgb(233, 233, 233);
+  border-radius: 0.7rem;
+}
+
+//cols="2" rowHeight="5:2"

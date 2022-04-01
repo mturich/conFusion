@@ -18,6 +18,7 @@ import { MatDialogModule, MatProgressSpinnerModule,  MatSliderModule} from "@ang
 import { HttpClientModule } from "@angular/common/http";
 import { baseURL } from "./shared/baseurl";
 
+
 import "hammerjs";
 import { AppComponent } from "./app.component";
 import { MenuComponent } from "./components/menu/menu.component";

@@ -2,10 +2,12 @@
      fxLayout="row"
      fxLayout.sm="column"
      fxLayout.xs="column"
+     
      fxLayoutGap="10px">
      
   <mat-card *ngIf="dish"
-            fxFlex>
+            fxFlex
+            [@expand]>
     <mat-card-header>
       <div mat-card-avatar></div>
       <mat-card-title>
@@ -34,7 +36,8 @@
 
 
   <mat-card *ngIf="promotion"
-            fxFlex>
+            fxFlex
+            [@expand]>
     <mat-card-header>
       <div mat-card-avatar></div>
       <mat-card-title>
@@ -64,7 +67,8 @@
 
 
   <mat-card *ngIf="leader"
-            fxFlex>
+            fxFlex
+            [@expand]>
     <mat-card-header>
       <div mat-card-avatar></div>
       <mat-card-title>

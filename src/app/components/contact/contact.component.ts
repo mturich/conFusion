@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { flyInOut } from "src/app/animations/app.animation";
 
 import { Feedback, ContactType } from "src/app/shared/Feedback";
 
@@ -7,6 +8,13 @@ import { Feedback, ContactType } from "src/app/shared/Feedback";
   selector: "app-contact",
   templateUrl: "./contact.component.html",
   styleUrls: ["./contact.component.scss"],
+  host: {
+    '[@flyInOut]': 'true',
+    'style': 'display: block;'
+  },
+  animations: [
+    flyInOut() 
+  ]
 })
 
 export class ContactComponent implements OnInit {

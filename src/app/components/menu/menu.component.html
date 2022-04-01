@@ -1,6 +1,7 @@
 <div class="container"
      fxLayout="column"
      fxLayoutGap="1rem">
+
   <div fxFlex>
     <div>
       <h1>Menu</h1>
@@ -8,12 +9,11 @@
     </div>
   </div>
 
-  <div fxFlex *ngIf="dishes" >
-    <mat-grid-list cols="2"
-                   >
-      <mat-grid-tile *ngFor="let dish of dishes" appHighlight
+  <div  *ngIf="dishes" Height="100%" [@expand]>
+    <mat-grid-list cols="2" gutterSize="3rem" >
+      <mat-grid-tile class="dish" *ngFor="let dish of dishes" appHighlight
                      [routerLink]="['/dishdetail', dish.id]"
-                     height="100px">
+                     >
         <img height="80%"
              src="{{ baseURL + dish.image }}"
              alt="{{ dish.name }}" />
