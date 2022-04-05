@@ -44,7 +44,7 @@
     </div>
   </div>
 
-  <div *ngIf="!btnclicked && !loading && !errMess"
+  <div *ngIf="!errMess && !submitting && !feedback"
        fxFlex
        fxFlexOffset="20px"
        class="form-size"
@@ -125,7 +125,7 @@
     </form>
   </div>
 
-  <div *ngIf="btnclicked && loading && !errMess"
+  <div *ngIf="!errMess && !submitting && feedback"
        [@expand]>
     <h2>The submitted feedback is:</h2>
     <br>
@@ -145,7 +145,7 @@
     <br>
   </div>
 
-  <div *ngIf="btnclicked && !loading && !errMess"
+  <div *ngIf="!errMess && submitting && !feedback"
        fxFlex>
     <mat-spinner></mat-spinner>
     <h4>Your feedback is sent .... please wait!</h4>

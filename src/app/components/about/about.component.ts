@@ -27,7 +27,7 @@ export class AboutComponent implements OnInit {
   constructor(
     private leaderService: LeaderService,
     private location: Location,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
     @Inject("BaseURL") public baseURL
   ) { }
 
