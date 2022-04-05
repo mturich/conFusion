@@ -150,8 +150,8 @@ export class DishdetailComponent implements OnInit {
       // handle any errors if they occure
       (errmess) => {
         (this.dish = null),
-          (this.dishcopy = null),
-          (this.errMess = <any>errmess);
+        (this.dishcopy = null),
+        (this.errMess = <any>errmess);
       }
     );
     this.commentFormDirective.resetForm();

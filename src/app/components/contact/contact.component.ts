@@ -1,6 +1,8 @@
+import { delay } from "rxjs/operators";
+import { FeedbackService } from "./../../service/feedback.service";
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { flyInOut } from "src/app/animations/app.animation";
+import { expand, flyInOut, visibility } from "src/app/animations/app.animation";
 
 import { Feedback, ContactType } from "src/app/shared/Feedback";
 
@@ -9,18 +11,18 @@ import { Feedback, ContactType } from "src/app/shared/Feedback";
   templateUrl: "./contact.component.html",
   styleUrls: ["./contact.component.scss"],
   host: {
-    '[@flyInOut]': 'true',
-    'style': 'display: block;'
+    "[@flyInOut]": "true",
+    style: "display: block;",
   },
-  animations: [
-    flyInOut() 
-  ]
+  animations: [flyInOut(), expand(),visibility()],
 })
-
 export class ContactComponent implements OnInit {
   feedbackForm: FormGroup;
   feedback: Feedback;
   contactType = ContactType;
+  errMess: string;
+  btnclicked: boolean = false;
+  loading: boolean = false;
   //needed to reset the form
   @ViewChild("fform") feedbackFormDirective;
 
@@ -52,16 +54,23 @@ export class ContactComponent implements OnInit {
     },
   };
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private feedbackService: FeedbackService
+  ) {
     this.createForm();
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   createForm(): void {
     this.feedbackForm = this.fb.group({
       firstname: [
-        "", [Validators.required, Validators.minLength(3), Validators.maxLength(25),
+        "",
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(25),
         ],
       ],
       lastname: [
@@ -106,9 +115,28 @@ export class ContactComponent implements OnInit {
     }
   }
 
+  resetPage() {
+    setTimeout(() => {
+      this.loading = false;
+      this.btnclicked = false;
+    }, 5000);
+  }
+
   onSubmit() {
-    this.feedback = this.feedbackForm.value;
-    console.log(this.feedback);
+    this.btnclicked = true;
+    this.feedbackService.submitFeedback(this.feedbackForm.value).subscribe(
+      (fb) => {
+        (this.loading = true), (this.feedback = fb);
+      },
+      // handle any errors if they occure
+      (errmess) => {
+        (this.feedback = null),
+          (this.loading = false),
+          (this.btnclicked = false),
+          (this.errMess = <any>errmess);
+      }
+    );
+    this.resetPage();
     this.feedbackForm.reset({
       firstname: "",
       lastname: "",

@@ -1,3 +1,4 @@
+
 import { AppRoutingModule } from "./app-routing/app-routing.module";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
@@ -35,6 +36,8 @@ import { ProcessHTTPMsgService } from './service/process-httpmsg.service';
 import { DishService } from "./service/dish.service";
 import { PromotionService } from "./service/promotion.service";
 import { LeaderService } from "./service/leader.service";
+import { FeedbackService } from './service/feedback.service';
+
 import { HighlightDirective } from './directives/highlight.directive';
 
 @NgModule({
@@ -84,6 +87,7 @@ import { HighlightDirective } from './directives/highlight.directive';
     PromotionService,
     LeaderService,
     ProcessHTTPMsgService,
+    FeedbackService,
     { provide: "BaseURL", useValue: baseURL }
   ],
 
