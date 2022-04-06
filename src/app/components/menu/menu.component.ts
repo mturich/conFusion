@@ -3,6 +3,7 @@ import { DishService } from "../../service/dish.service";
 import { Component, Inject, OnInit } from "@angular/core";
 import { Dish } from "../../shared/dish";
 import { flyInOut, expand } from "src/app/animations/app.animation";
+
 @Component({
   selector: "app-menu",
   templateUrl: "./menu.component.html",

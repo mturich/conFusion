@@ -1,4 +1,3 @@
-
 import { AppRoutingModule } from "./app-routing/app-routing.module";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
@@ -15,10 +14,13 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatSelectModule } from "@angular/material/select";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
-import { MatDialogModule, MatProgressSpinnerModule,  MatSliderModule} from "@angular/material";
+import {
+  MatDialogModule,
+  MatProgressSpinnerModule,
+  MatSliderModule,
+} from "@angular/material";
 import { HttpClientModule } from "@angular/common/http";
 import { baseURL } from "./shared/baseurl";
-
 
 import "hammerjs";
 import { AppComponent } from "./app.component";
@@ -32,13 +34,13 @@ import { ContactComponent } from "./components/contact/contact.component";
 import { PageNotFoundComponent } from "./components/page-not-found/page-not-found.component";
 import { LoginComponent } from "./components/login/login.component";
 
-import { ProcessHTTPMsgService } from './service/process-httpmsg.service';
+import { ProcessHTTPMsgService } from "./service/process-httpmsg.service";
 import { DishService } from "./service/dish.service";
 import { PromotionService } from "./service/promotion.service";
 import { LeaderService } from "./service/leader.service";
-import { FeedbackService } from './service/feedback.service';
+import { FeedbackService } from "./service/feedback.service";
 
-import { HighlightDirective } from './directives/highlight.directive';
+import { HighlightDirective } from "./directives/highlight.directive";
 
 @NgModule({
   declarations: [
@@ -76,7 +78,6 @@ import { HighlightDirective } from './directives/highlight.directive';
     MatProgressSpinnerModule,
     MatSliderModule,
     HttpClientModule,
-
   ],
 
   entryComponents: [LoginComponent],
@@ -88,7 +89,7 @@ import { HighlightDirective } from './directives/highlight.directive';
     LeaderService,
     ProcessHTTPMsgService,
     FeedbackService,
-    { provide: "BaseURL", useValue: baseURL }
+    { provide: "BaseURL", useValue: baseURL },
   ],
 
   bootstrap: [AppComponent],

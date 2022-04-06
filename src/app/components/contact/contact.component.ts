@@ -18,7 +18,7 @@ import { Feedback, ContactType } from "src/app/shared/Feedback";
 })
 export class ContactComponent implements OnInit {
   feedbackForm: FormGroup;
-  feedback: Feedback;
+  feedback: Feedback = null;
   contactType = ContactType;
   errMess: string;
   submitting: boolean = false;
